@@ -26,16 +26,16 @@ public class f_grupo extends javax.swing.JInternalFrame {
     /**
      * Variables para realizar las transacciones con la base de datos
      */
-    String nombreTabla = "bimestre";
-    String[] titulos = {"Id", "Ciclo", "Descripción", "Número", "Estado"};
-    String campos = "idañoescolar, nombre, numero, estado";
-    String nombreId = "idbimestre";
+    String nombreTabla = "grupo";
+    String[] titulos = {"Id", "Codigo", "Descripción", "Fecha Inicio", "No. Alumno", "estado"};
+    String campos = "codigo, descripcion, fechainicio, fechafin, cantalumnos, idcarrera, idseccion, estado ";
+    String nombreId = "idgrupo";
 
     public Hashtable<String, String> hashUnidad = new Hashtable<>();
     public Hashtable<String, String> hashUnidad2 = new Hashtable<>();
 
-    //public Hashtable<String, String> hashCategoria = new Hashtable<>();
-    //public Hashtable<String, String> hashCategoria2 = new Hashtable<>();
+    public Hashtable<String, String> hashCategoria = new Hashtable<>();
+    public Hashtable<String, String> hashCategoria2 = new Hashtable<>();
     DefaultTableModel model;
     Datos datos = new Datos();
     Peticiones peticiones = new Peticiones();
@@ -65,12 +65,12 @@ public class f_grupo extends javax.swing.JInternalFrame {
             Opcion op = new Opcion("0", " ");
 
             /* Añadimos el primer elemento al combo box */
-            comboAñoescolar.addItem(op);
+            comboCarrera.addItem(op);
 
             /* Llamos a la funcion consultaUnidad la cual nos devuelve todas las
              Unidades que hay, esos datos los guardamos en un ResultSet para luego
              llenar el combo box con todas las Unidades */
-            ResultSet rs = peticiones.consultaaño("");
+            ResultSet rs = peticiones.consultaCarrera("");
 
             /* Hacemos un while que mientras hallan registros en rs, sobreescrira
              al objeto de la clase opcion con los datos del objeto rs, y los añada
@@ -79,46 +79,46 @@ public class f_grupo extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 count++;
                 op = new Opcion(
-                        rs.getString("idañoescolar"),
+                        rs.getString("idcarrera"),
                         rs.getString("descripcion"));
-                comboAñoescolar.addItem(op);
+                comboCarrera.addItem(op);
                 hashUnidad.put(rs.getString("descripcion"), "" + count);
-                hashUnidad2.put(rs.getString("idañoescolar"), rs.getString("descripcion"));
+                hashUnidad2.put(rs.getString("idcarrera"), rs.getString("descripcion"));
             }
 
-//            /* Instaciamos un objeto de la clase Opcion para cargar el combo box
-//             de los servicios  */
-//            Opcion op2 = new Opcion("0", " ");
-//
-//            /* Añadimos el primer elemento al combo box */
-//            comboCategoria.addItem(op2);
-//
-//            /* Llamos a la funcion getServicios la cual nos devuelve todos los
-//             Servicios que hay, esos datos los guardamos en un ResultSet para luego
-//             llenar el combo box con todos los Servicios */
-//            ResultSet rsSer = peticiones.consultaCicloescolar("");
-//
-//            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
-//             al objeto de la clase opcion con los datos del objeto rs, y los añada
-//             al combo box */
-//            int count2 = 0;
-//            while (rsSer.next()) {
-//                count2++;
-//                op2 = new Opcion(
-//                        rsSer.getString("idCategoria"),
-//                        rsSer.getString("nombre"));
-//                comboCategoria.addItem(op2);
-//                hashCategoria.put(rsSer.getString("nombre"), "" + count2);
-//                hashCategoria2.put(rsSer.getString("idCategoria"), rsSer.getString("nombre"));
-//            }
+            /* Instaciamos un objeto de la clase Opcion para cargar el combo box
+             de los servicios  */
+            Opcion op2 = new Opcion("0", " ");
+
+            /* Añadimos el primer elemento al combo box */
+            comboSeccion.addItem(op2);
+
+            /* Llamos a la funcion getServicios la cual nos devuelve todos los
+             Servicios que hay, esos datos los guardamos en un ResultSet para luego
+             llenar el combo box con todos los Servicios */
+            ResultSet rsSer = peticiones.consultaSeccion("");
+
+            /* Hacemos un while que mientras hallan registros en rs, sobreescrira
+             al objeto de la clase opcion con los datos del objeto rs, y los añada
+             al combo box */
+            int count2 = 0;
+            while (rsSer.next()) {
+                count2++;
+                op2 = new Opcion(
+                        rsSer.getString("idseccion"),
+                        rsSer.getString("nombre"));
+                comboSeccion.addItem(op2);
+                hashCategoria.put(rsSer.getString("nombre"), "" + count2);
+                hashCategoria2.put(rsSer.getString("idseccion"), rsSer.getString("nombre"));
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Problema con: " + e.getMessage());
         }
     }
 
     /**
-     * Prepara el formulario y jtable para crear un nuevo producto (Habilita y
-     * limpia los campos correspondientes
+     * Prepara el formulario y jtable para crear un nuevo grupo (Habilita y
+ limpia los campos correspondientes
      */
     private void nuevo() {
         Utilidades.setEditableTexto(this.tbPane2, true, null, true, "");
@@ -166,8 +166,32 @@ public class f_grupo extends javax.swing.JInternalFrame {
         }
         return null;
     }
+    /**
+     * Obtiene la fecha de un JDateChooser, y devuelve la fecha como un string
+     *
+     * @return fecha
+     */
+    private String getFecha1() {
 
-    /* Funcion para llenar la tabla cuando se busque un producto en especifico
+        try {
+            String fecha;
+            int años = dateFechaFin.getCalendar().get(Calendar.YEAR);
+            int dias = dateFechaFin.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int mess = dateFechaFin.getCalendar().get(Calendar.MONTH) + 1;
+            int hours = dateFechaFin.getCalendar().get(Calendar.HOUR_OF_DAY);
+            int minutes = dateFechaFin.getCalendar().get(Calendar.MINUTE);
+            int seconds = dateFechaFin.getCalendar().get(Calendar.SECOND);
+
+            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
+            return fecha;
+        } catch (Exception e) {
+            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
+
+        }
+        return null;
+    }
+
+    /* Funcion para llenar la tabla cuando se busque un grupo en especifico
      por el código, nombre, nit  */
     private void llenarTabla(String nombre) {
 
@@ -182,25 +206,25 @@ public class f_grupo extends javax.swing.JInternalFrame {
              llenar la tabla con los registros.
             
              */
-            ResultSet rs = peticiones.consultaBimestre(nombre);
-            Object[] registro = new Object[8];
+            ResultSet rs = peticiones.consultaGrupo(nombre);
+            Object[] registro = new Object[7];
 
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
              filas a la tabla. */
             while (rs.next()) {
 
-                registro[0] = rs.getString("idbimestre");
-                registro[1] = rs.getString("idañoescolar");
-                registro[2] = rs.getString("nombre");
-                registro[3] = rs.getString("numero");
-                //registro[3] = rs.getString("preciocoste");
-                //registro[4] = rs.getString("precioventa");
-                //registro[5] = rs.getString("preciomayoreo");
+                registro[0] = rs.getString("idgrupo");
+                registro[1] = rs.getString("codigo");
+                registro[2] = rs.getString("descripcion");
+                registro[3] = rs.getDate("fechainicio");
+                registro[4] = rs.getDate("fechafin");
+                registro[5] = rs.getString("cantalumnos");
+               
 
                 if (rs.getString("estado").equals("1")) {
-                    registro[4] = ("Activo");
+                    registro[6] = ("Activo");
                 } else if (rs.getString("estado").equals("0")) {
-                    registro[4] = ("Inactivo");
+                    registro[6] = ("Inactivo");
                 }
                 //registro[7] = rs.getString("fec_reg");
                 model.addRow(registro);
@@ -212,7 +236,7 @@ public class f_grupo extends javax.swing.JInternalFrame {
         }
     }
 
-    /* Funcion para llenar la tabla cuando se busque un producto en especifico
+    /* Funcion para llenar la tabla cuando se busque un grupo en especifico
      por el Id */
     private void llenarFormulario(int s) {
 
@@ -231,16 +255,19 @@ public class f_grupo extends javax.swing.JInternalFrame {
             /* Hacemos un while que mientras en rs hallan datos el ira agregando
              filas a la tabla. */
             while (rs.next()) {
-                txtNumero.setText(rs.getString("numero"));
-                txtNombre.setText(rs.getString("nombre"));
-                comboAñoescolar.setEditable(true);
-                //comboCategoria.setEditable(true);
-                int u = Integer.parseInt((String) hashUnidad.get(hashUnidad2.get(rs.getString("idañoescolar"))));
-                comboAñoescolar.setSelectedIndex(u);
-                //int c = Integer.parseInt((String) hashCategoria.get(hashCategoria2.get(rs.getString("idCategoria"))));
-                //comboCategoria.setSelectedIndex(c);
+                txtNumero.setText(rs.getString("codigo"));
+                txtNombre.setText(rs.getString("descripcion"));
+                txtcantidadALum.setText(rs.getString("cantalumnos"));
+                comboCarrera.setEditable(true);
+                            
+                int u = Integer.parseInt((String) hashUnidad.get(hashUnidad2.get(rs.getString("idcarrera"))));
+                comboCarrera.setSelectedIndex(u);
+                comboSeccion.setEditable(true);
+                int c = Integer.parseInt((String) hashCategoria.get(hashCategoria2.get(rs.getString("idseccion"))));
+                comboSeccion.setSelectedIndex(c);
                 //txtObservacion.setText(rs.getString("observacion"));
-                //dateFecha.setDate(rs.getDate("fec_reg"));
+                dateFechaInicio.setDate(rs.getDate("fechainicio"));
+                dateFechaFin.setDate(rs.getDate("fechafin"));
                 rbEstado.setSelected(rs.getBoolean("estado"));
                 //txtUbicacion.setText(rs.getString("ubicacion"));
                 //txtMinimo.setText(rs.getString("invminimo"));
@@ -256,32 +283,33 @@ public class f_grupo extends javax.swing.JInternalFrame {
     }
 
     /**
-     * Realiza la transacción para guardar los recistros de un nuevo producto
+     * Realiza la transacción para guardar los recistros de un nuevo grupo
      */
     private void Guardar() {
 
         if (Utilidades.esObligatorio(this.panelFormulario, true)) {
 
-            Utilidades.esObligatorio(this.panelFormulario1, true);
+            //Utilidades.esObligatorio(this.panelFormulario1, true);
             JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
-
-            Utilidades.esObligatorio(this.panelFormulario, true);
-            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+//        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
+//
+//            Utilidades.esObligatorio(this.panelFormulario, true);
+//            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
         Object[] producto = {
-            Integer.parseInt(((Opcion) comboAñoescolar.getSelectedItem()).getValor()),
-            txtNombre.getText(), txtNumero.getText(),
+            txtNumero.getText(), txtNombre.getText(), getFecha(), getFecha1(), txtcantidadALum.getText(),
+            Integer.parseInt(((Opcion) comboCarrera.getSelectedItem()).getValor()),
+               Integer.parseInt(((Opcion) comboSeccion.getSelectedItem()).getValor()),
             //Integer.parseInt(((Opcion) comboCategoria.getSelectedItem()).getValor()),
             //txtObservacion.getText(), getFecha(),
             peticiones.selected(rbEstado)
         };
 
         /* Llamamos a la funcion guardarRegistrosId la cual recibe como parametro
-         el nombre de la tabla, los campos y los valores a insertar del producto */
+         el nombre de la tabla, los campos y los valores a insertar del grupo */
         int id = peticiones.guardarRegistrosId(nombreTabla, campos, producto);
 
         if (id != 0) {
@@ -309,28 +337,29 @@ public class f_grupo extends javax.swing.JInternalFrame {
 
         if (Utilidades.esObligatorio(this.panelFormulario, true)) {
 
-            Utilidades.esObligatorio(this.panelFormulario1, true);
+           // Utilidades.esObligatorio(this.panelFormulario1, true);
             JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
-
-            Utilidades.esObligatorio(this.panelFormulario, true);
-            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+//        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
+//
+//            Utilidades.esObligatorio(this.panelFormulario, true);
+//            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
 
         String id = Utilidades.objectToString(tableResultados.getValueAt(s, 0));
 
-        Object[] producto = {
-            Integer.parseInt(((Opcion) comboAñoescolar.getSelectedItem()).getValor()),
-            txtNombre.getText(),txtNumero.getText(), 
+        Object[] grupo = {
+            txtNumero.getText(), txtNombre.getText(), getFecha(), getFecha1(), txtcantidadALum.getText(),
+            Integer.parseInt(((Opcion) comboCarrera.getSelectedItem()).getValor()),
+               Integer.parseInt(((Opcion) comboSeccion.getSelectedItem()).getValor()),
             //Integer.parseInt(((Opcion) comboCategoria.getSelectedItem()).getValor()),
             //txtObservacion.getText(), getFecha(),
             peticiones.selected(rbEstado), id
         };
 
-        if (peticiones.actualizarRegistroId(nombreTabla, campos, producto, nombreId)) {
+        if (peticiones.actualizarRegistroId(nombreTabla, campos, grupo, nombreId)) {
             JOptionPane.showMessageDialog(rootPane, "El registro ha sido Modificado correctamente ");
             nuevo();
         } else {
@@ -405,11 +434,13 @@ public class f_grupo extends javax.swing.JInternalFrame {
         rbEstado = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
         labelCorreo2 = new javax.swing.JLabel();
-        comboAñoescolar = new javax.swing.JComboBox();
+        comboCarrera = new javax.swing.JComboBox();
         dateFechaFin = new com.toedter.calendar.JDateChooser();
         labelFecha1 = new javax.swing.JLabel();
         labelCorreo3 = new javax.swing.JLabel();
         txtcantidadALum = new elaprendiz.gui.textField.TextField();
+        labelCorreo4 = new javax.swing.JLabel();
+        comboSeccion = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setName("producto"); // NOI18N
@@ -650,9 +681,9 @@ public class f_grupo extends javax.swing.JInternalFrame {
 
             labelCorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCorreo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo.setText("Año Escolar*");
+            labelCorreo.setText("Carrera*");
             labelCorreo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 25));
+            panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 25));
 
             labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -716,10 +747,10 @@ public class f_grupo extends javax.swing.JInternalFrame {
             labelCorreo2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
             panelFormulario.add(labelCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 25));
 
-            comboAñoescolar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-            comboAñoescolar.setEnabled(false);
-            comboAñoescolar.setName("unidad"); // NOI18N
-            panelFormulario.add(comboAñoescolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 320, 27));
+            comboCarrera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            comboCarrera.setEnabled(false);
+            comboCarrera.setName("unidad"); // NOI18N
+            panelFormulario.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 320, 27));
 
             dateFechaFin.setBackground(new java.awt.Color(255, 255, 255));
             dateFechaFin.setDate(Calendar.getInstance().getTime());
@@ -753,6 +784,17 @@ public class f_grupo extends javax.swing.JInternalFrame {
             txtcantidadALum.setOpaque(true);
             txtcantidadALum.setPreferredSize(new java.awt.Dimension(120, 21));
             panelFormulario.add(txtcantidadALum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, 25));
+
+            labelCorreo4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            labelCorreo4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+            labelCorreo4.setText("Sección*");
+            labelCorreo4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+            panelFormulario.add(labelCorreo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 25));
+
+            comboSeccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+            comboSeccion.setEnabled(false);
+            comboSeccion.setName("unidad"); // NOI18N
+            panelFormulario.add(comboSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 320, 27));
 
             tbPane2.addTab("Información", panelFormulario);
 
@@ -880,7 +922,8 @@ public class f_grupo extends javax.swing.JInternalFrame {
     private javax.swing.JButton bnEstadocuenta;
     private javax.swing.JButton bnGuardar;
     private javax.swing.JButton bnSuprimir;
-    private javax.swing.JComboBox comboAñoescolar;
+    private javax.swing.JComboBox comboCarrera;
+    private javax.swing.JComboBox comboSeccion;
     private com.toedter.calendar.JDateChooser dateFechaFin;
     private com.toedter.calendar.JDateChooser dateFechaInicio;
     private javax.swing.JSeparator jSeparator1;
@@ -891,6 +934,7 @@ public class f_grupo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelCorreo1;
     private javax.swing.JLabel labelCorreo2;
     private javax.swing.JLabel labelCorreo3;
+    private javax.swing.JLabel labelCorreo4;
     private javax.swing.JLabel labelEncabezado;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelFecha1;

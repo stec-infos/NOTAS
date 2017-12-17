@@ -132,6 +132,15 @@ public class Peticiones extends Datos {
         return rs;
     }
     
+    public ResultSet consultaSeccion(String buscar) {
+
+        String sql = "SELECT * FROM seccion "
+                + "WHERE nombre LIKE  '%" + buscar + "%'";
+
+        ResultSet rs = this.getRegistros(sql);
+        return rs;
+    }
+    
     public ResultSet consultaNivel(String buscar) {
 
         String sql = "SELECT * FROM nivel "
@@ -198,6 +207,15 @@ public class Peticiones extends Datos {
 
         String sql = "SELECT * FROM bimestre "
                 + "WHERE nombre LIKE  '%" + buscar + "%' or numero='" + buscar + "'";
+
+        ResultSet rs = this.getRegistros(sql);
+        return rs;
+    }
+    
+        public ResultSet consultaGrupo(String buscar) {
+
+        String sql = "SELECT * FROM grupo "
+                + "WHERE descripcion LIKE  '%" + buscar + "%' or codigo='" + buscar + "'";
 
         ResultSet rs = this.getRegistros(sql);
         return rs;

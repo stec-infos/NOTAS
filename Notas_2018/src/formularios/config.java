@@ -92,6 +92,7 @@ public class config extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         panelFormulario = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -256,7 +257,7 @@ public class config extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 102, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Compras");
-        panelResultados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 64, -1));
+        panelResultados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 64, -1));
 
         jLabel10.setFont(new java.awt.Font("Decker", 1, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 102, 0));
@@ -270,6 +271,12 @@ public class config extends javax.swing.JInternalFrame {
         jLabel11.setText("Docente");
         jLabel11.setToolTipText("");
         panelResultados.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 64, -1));
+
+        jLabel12.setFont(new java.awt.Font("Decker", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Grupo");
+        panelResultados.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 64, -1));
 
         panelImage.add(panelResultados);
         panelResultados.setBounds(0, 227, 890, 140);
@@ -465,9 +472,9 @@ public class config extends javax.swing.JInternalFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-        frmVenta newfrm = new frmVenta();
+        f_grupo newfrm = new f_grupo();
         if (newfrm == null) {
-            newfrm = new frmVenta();
+            newfrm = new f_grupo();
         }
         AddForms.adminInternalFrame(panel_center, newfrm);
     }//GEN-LAST:event_jLabel6MouseClicked
@@ -487,6 +494,7 @@ public class config extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
