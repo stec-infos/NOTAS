@@ -44,6 +44,7 @@ public class Backup extends javax.swing.JInternalFrame {
         String fecha = "" + c.get(Calendar.DATE);
         fecha = fecha + "-" + c.get(Calendar.MONTH);//String.valueOf(c.get(Calendar.MONTH));
         fecha = fecha + "-" + c.get(Calendar.YEAR);
+        //prueba de github
         //String nombre = this.jTextField1.getText();
         //String pass = this.jTextField2.getText();
         RealizarBackupMySQL.setFileSelectionMode(JFileChooser.FILES_ONLY);
