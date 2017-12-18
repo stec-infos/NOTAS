@@ -150,6 +150,7 @@ public class Peticiones extends Datos {
         return rs;
     }
 
+    
     public ResultSet consultaUnidad(String buscar) {
 
         String sql = "SELECT * FROM unidad "

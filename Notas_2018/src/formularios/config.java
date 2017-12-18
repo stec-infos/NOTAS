@@ -216,6 +216,11 @@ public class config extends javax.swing.JInternalFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/category_label.png"))); // NOI18N
         jLabel5.setText("jLabel1");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         panelResultados.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 64, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/marca.png"))); // NOI18N
@@ -256,7 +261,12 @@ public class config extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Decker", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 102, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Compras");
+        jLabel9.setText("Seccion");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         panelResultados.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 64, -1));
 
         jLabel10.setFont(new java.awt.Font("Decker", 1, 11)); // NOI18N
@@ -487,6 +497,21 @@ public class config extends javax.swing.JInternalFrame {
         }
         AddForms.adminInternalFrame(panel_center, newfrm);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+         f_seccion newfrm = new f_seccion();
+        if (newfrm == null) {
+            newfrm = new f_seccion();
+        }
+        AddForms.adminInternalFrame(panel_center, newfrm);
+              
+    }//GEN-LAST:event_jLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
