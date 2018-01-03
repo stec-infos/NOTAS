@@ -147,25 +147,25 @@ public class f_bimestre extends javax.swing.JInternalFrame {
      *
      * @return fecha
      */
-    private String getFecha() {
-
-        try {
-            String fecha;
-            int años = dateFecha.getCalendar().get(Calendar.YEAR);
-            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
-            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
-            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
-            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
-            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
-
-            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
-            return fecha;
-        } catch (Exception e) {
-            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
-
-        }
-        return null;
-    }
+//    private String getFecha() {
+//
+//        try {
+//            String fecha;
+//            int años = dateFecha.getCalendar().get(Calendar.YEAR);
+//            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+//            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
+//            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
+//            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
+//            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
+//
+//            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
+//            return fecha;
+//        } catch (Exception e) {
+//            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
+//
+//        }
+//        return null;
+//    }
 
     /* Funcion para llenar la tabla cuando se busque un producto en especifico
      por el código, nombre, nit  */
@@ -262,16 +262,16 @@ public class f_bimestre extends javax.swing.JInternalFrame {
 
         if (Utilidades.esObligatorio(this.panelFormulario, true)) {
 
-            Utilidades.esObligatorio(this.panelFormulario1, true);
+           // Utilidades.esObligatorio(this.panelFormulario1, true);
             JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
-
-            Utilidades.esObligatorio(this.panelFormulario, true);
-            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+//        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
+//
+//            Utilidades.esObligatorio(this.panelFormulario, true);
+//            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
         Object[] producto = {
             Integer.parseInt(((Opcion) comboAñoescolar.getSelectedItem()).getValor()),
             txtNombre.getText(), txtNumero.getText(),
@@ -309,16 +309,16 @@ public class f_bimestre extends javax.swing.JInternalFrame {
 
         if (Utilidades.esObligatorio(this.panelFormulario, true)) {
 
-            Utilidades.esObligatorio(this.panelFormulario1, true);
+           // Utilidades.esObligatorio(this.panelFormulario1, true);
             JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
-
-            Utilidades.esObligatorio(this.panelFormulario, true);
-            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+//        if (Utilidades.esObligatorio(this.panelFormulario1, true)) {
+//
+//            Utilidades.esObligatorio(this.panelFormulario, true);
+//            JOptionPane.showInternalMessageDialog(this, "Los campos marcados son Obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
 
         String id = Utilidades.objectToString(tableResultados.getValueAt(s, 0));
 
@@ -396,32 +396,14 @@ public class f_bimestre extends javax.swing.JInternalFrame {
         panelFormulario = new javax.swing.JPanel();
         labelCodigo = new javax.swing.JLabel();
         labelCorreo = new javax.swing.JLabel();
-        labelFecha = new javax.swing.JLabel();
         txtNumero = new elaprendiz.gui.textField.TextField();
         txtNombre = new elaprendiz.gui.textField.TextField();
-        dateFecha = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
         labelCorreo1 = new javax.swing.JLabel();
         rbEstado = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
         labelCorreo2 = new javax.swing.JLabel();
         comboAñoescolar = new javax.swing.JComboBox();
-        panelFormulario1 = new javax.swing.JPanel();
-        labelNit = new javax.swing.JLabel();
-        labelCodigo1 = new javax.swing.JLabel();
-        txtUbicacion = new elaprendiz.gui.textField.TextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        labelNit1 = new javax.swing.JLabel();
-        txtExistencia = new javax.swing.JFormattedTextField();
-        labelCorreo5 = new javax.swing.JLabel();
-        txtCosto = new javax.swing.JFormattedTextField();
-        txtVenta = new javax.swing.JFormattedTextField();
-        labelCorreo6 = new javax.swing.JLabel();
-        labelCorreo7 = new javax.swing.JLabel();
-        txtLimitecredito4 = new javax.swing.JFormattedTextField();
-        txtMayoreo = new javax.swing.JFormattedTextField();
-        txtMinimo = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setName("producto"); // NOI18N
@@ -656,21 +638,15 @@ public class f_bimestre extends javax.swing.JInternalFrame {
 
             labelCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCodigo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCodigo.setText("Código*");
+            labelCodigo.setText("Número");
             labelCodigo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 25));
+            panelFormulario.add(labelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 25));
 
             labelCorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCorreo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
             labelCorreo.setText("Año Escolar*");
             labelCorreo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
             panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 25));
-
-            labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelFecha.setText("Fecha*");
-            labelFecha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 120, 25));
 
             txtNumero.setEditable(false);
             txtNumero.setBackground(new java.awt.Color(255, 255, 255));
@@ -680,7 +656,7 @@ public class f_bimestre extends javax.swing.JInternalFrame {
             txtNumero.setName("codigo"); // NOI18N
             txtNumero.setOpaque(true);
             txtNumero.setPreferredSize(new java.awt.Dimension(120, 21));
-            panelFormulario.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 320, 25));
+            panelFormulario.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 320, 25));
 
             txtNombre.setEditable(false);
             txtNombre.setBackground(new java.awt.Color(255, 255, 255));
@@ -690,18 +666,7 @@ public class f_bimestre extends javax.swing.JInternalFrame {
             txtNombre.setName("descripcion"); // NOI18N
             txtNombre.setOpaque(true);
             txtNombre.setPreferredSize(new java.awt.Dimension(120, 21));
-            panelFormulario.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 320, 25));
-
-            dateFecha.setBackground(new java.awt.Color(255, 255, 255));
-            dateFecha.setDate(Calendar.getInstance().getTime());
-            dateFecha.setDateFormatString("dd/MM/yyyy");
-            dateFecha.setEnabled(false);
-            dateFecha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            dateFecha.setIcon(null);
-            dateFecha.setMaxSelectableDate(new java.util.Date(3093496470100000L));
-            dateFecha.setMinSelectableDate(new java.util.Date(-62135744300000L));
-            dateFecha.setPreferredSize(new java.awt.Dimension(120, 22));
-            panelFormulario.add(dateFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 130, 25));
+            panelFormulario.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 320, 25));
 
             jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
             panelFormulario.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 35, -1, 200));
@@ -724,9 +689,9 @@ public class f_bimestre extends javax.swing.JInternalFrame {
 
             labelCorreo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCorreo2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo2.setText("Descripción*");
+            labelCorreo2.setText("Nombre");
             labelCorreo2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 25));
+            panelFormulario.add(labelCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 25));
 
             comboAñoescolar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
             comboAñoescolar.setEnabled(false);
@@ -734,133 +699,6 @@ public class f_bimestre extends javax.swing.JInternalFrame {
             panelFormulario.add(comboAñoescolar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, 27));
 
             tbPane2.addTab("Información", panelFormulario);
-
-            panelFormulario1.setBackground(new java.awt.Color(255, 255, 255));
-            panelFormulario1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            panelFormulario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-            labelNit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelNit.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelNit.setText("Existencia Minima");
-            labelNit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 150, 25));
-
-            labelCodigo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelCodigo1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCodigo1.setText("Ubicación*");
-            labelCodigo1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelCodigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 150, 25));
-
-            txtUbicacion.setEditable(false);
-            txtUbicacion.setBackground(new java.awt.Color(255, 255, 255));
-            txtUbicacion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-            txtUbicacion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtUbicacion.setEnabled(false);
-            txtUbicacion.setName("codigo"); // NOI18N
-            txtUbicacion.setOpaque(true);
-            txtUbicacion.setPreferredSize(new java.awt.Dimension(120, 21));
-            panelFormulario1.add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 210, 25));
-
-            jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-            panelFormulario1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 35, -1, 200));
-
-            jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-            panelFormulario1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 35, -1, 200));
-
-            labelNit1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelNit1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelNit1.setText("Existencia disponible");
-            labelNit1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelNit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 150, 25));
-
-            txtExistencia.setEditable(false);
-            txtExistencia.setBackground(new java.awt.Color(255, 255, 255));
-            txtExistencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtExistencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtExistencia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtExistencia.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtExistencia.setEnabled(false);
-            txtExistencia.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtExistencia.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtExistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 210, 25));
-
-            labelCorreo5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelCorreo5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo5.setText("Precio Mayoreo*");
-            labelCorreo5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelCorreo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 120, 25));
-
-            txtCosto.setEditable(false);
-            txtCosto.setBackground(new java.awt.Color(255, 255, 255));
-            txtCosto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtCosto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtCosto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtCosto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtCosto.setEnabled(false);
-            txtCosto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtCosto.setName("costo"); // NOI18N
-            txtCosto.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 110, 25));
-
-            txtVenta.setEditable(false);
-            txtVenta.setBackground(new java.awt.Color(255, 255, 255));
-            txtVenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtVenta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtVenta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtVenta.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtVenta.setEnabled(false);
-            txtVenta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtVenta.setName("venta"); // NOI18N
-            txtVenta.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 110, 25));
-
-            labelCorreo6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelCorreo6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo6.setText("Precio Venta*");
-            labelCorreo6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelCorreo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 120, 25));
-
-            labelCorreo7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelCorreo7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo7.setText("Precio Costo*");
-            labelCorreo7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario1.add(labelCorreo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 120, 25));
-
-            txtLimitecredito4.setEditable(false);
-            txtLimitecredito4.setBackground(new java.awt.Color(255, 255, 255));
-            txtLimitecredito4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtLimitecredito4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtLimitecredito4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtLimitecredito4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtLimitecredito4.setEnabled(false);
-            txtLimitecredito4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtLimitecredito4.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtLimitecredito4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, 25));
-
-            txtMayoreo.setEditable(false);
-            txtMayoreo.setBackground(new java.awt.Color(255, 255, 255));
-            txtMayoreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtMayoreo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtMayoreo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtMayoreo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtMayoreo.setEnabled(false);
-            txtMayoreo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtMayoreo.setName("mayoreo"); // NOI18N
-            txtMayoreo.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtMayoreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 110, 25));
-
-            txtMinimo.setEditable(false);
-            txtMinimo.setBackground(new java.awt.Color(255, 255, 255));
-            txtMinimo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-            txtMinimo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new FormatoDecimal("#####0.00",true))));
-            txtMinimo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-            txtMinimo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-            txtMinimo.setEnabled(false);
-            txtMinimo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            txtMinimo.setPreferredSize(new java.awt.Dimension(80, 23));
-            panelFormulario1.add(txtMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 210, 25));
-
-            tbPane2.addTab("Inventario", panelFormulario1);
 
             panelImage.add(tbPane2);
             tbPane2.setBounds(0, 370, 890, 292);
@@ -987,30 +825,19 @@ public class f_bimestre extends javax.swing.JInternalFrame {
     private javax.swing.JButton bnGuardar;
     private javax.swing.JButton bnSuprimir;
     private javax.swing.JComboBox comboAñoescolar;
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel labelBusqueda;
     private javax.swing.JLabel labelCodigo;
-    private javax.swing.JLabel labelCodigo1;
     private javax.swing.JLabel labelCorreo;
     private javax.swing.JLabel labelCorreo1;
     private javax.swing.JLabel labelCorreo2;
-    private javax.swing.JLabel labelCorreo5;
-    private javax.swing.JLabel labelCorreo6;
-    private javax.swing.JLabel labelCorreo7;
     private javax.swing.JLabel labelEncabezado;
-    private javax.swing.JLabel labelFecha;
-    private javax.swing.JLabel labelNit;
-    private javax.swing.JLabel labelNit1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelBotonesformulario;
     private javax.swing.JPanel panelBusqueda;
     private jcMousePanel.jcMousePanel panelEncabezado;
     private javax.swing.JPanel panelFormulario;
-    private javax.swing.JPanel panelFormulario1;
     private elaprendiz.gui.panel.PanelImage panelImage;
     private javax.swing.JPanel panelResultados;
     private javax.swing.JRadioButton rbEstado;
@@ -1018,14 +845,7 @@ public class f_bimestre extends javax.swing.JInternalFrame {
     private javax.swing.JTable tableResultados;
     private elaprendiz.gui.panel.TabbedPaneHeader tbPane2;
     private elaprendiz.gui.textField.TextField txtBusqueda;
-    private javax.swing.JFormattedTextField txtCosto;
-    private javax.swing.JFormattedTextField txtExistencia;
-    private javax.swing.JFormattedTextField txtLimitecredito4;
-    private javax.swing.JFormattedTextField txtMayoreo;
-    private javax.swing.JFormattedTextField txtMinimo;
     private elaprendiz.gui.textField.TextField txtNombre;
     private elaprendiz.gui.textField.TextField txtNumero;
-    private elaprendiz.gui.textField.TextField txtUbicacion;
-    private javax.swing.JFormattedTextField txtVenta;
     // End of variables declaration//GEN-END:variables
 }

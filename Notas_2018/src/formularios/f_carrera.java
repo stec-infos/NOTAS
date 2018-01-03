@@ -147,25 +147,25 @@ public class f_carrera extends javax.swing.JInternalFrame {
      *
      * @return fecha
      */
-    private String getFecha() {
-
-        try {
-            String fecha;
-            int años = dateFecha.getCalendar().get(Calendar.YEAR);
-            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
-            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
-            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
-            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
-            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
-
-            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
-            return fecha;
-        } catch (Exception e) {
-            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
-
-        }
-        return null;
-    }
+//    private String getFecha() {
+//
+//        try {
+//            String fecha;
+//            int años = dateFecha.getCalendar().get(Calendar.YEAR);
+//            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+//            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
+//            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
+//            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
+//            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
+//
+//            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
+//            return fecha;
+//        } catch (Exception e) {
+//            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
+//
+//        }
+//        return null;
+//    }
 
     /* Funcion para llenar la tabla cuando se busque un producto en especifico
      por el código, nombre, nit  */
@@ -395,10 +395,8 @@ public class f_carrera extends javax.swing.JInternalFrame {
         panelFormulario = new javax.swing.JPanel();
         labelCodigo = new javax.swing.JLabel();
         labelCorreo = new javax.swing.JLabel();
-        labelFecha = new javax.swing.JLabel();
         txtDescripcion = new elaprendiz.gui.textField.TextField();
         txtObservacion = new elaprendiz.gui.textField.TextField();
-        dateFecha = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
         labelCorreo1 = new javax.swing.JLabel();
         rbEstado = new javax.swing.JRadioButton();
@@ -413,7 +411,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
         panelImage.setBackground(new java.awt.Color(255, 255, 255));
         panelImage.setLayout(null);
 
-        panelBotones.setBackground(java.awt.SystemColor.controlHighlight);
         panelBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBotones.setFocusable(false);
 
@@ -513,7 +510,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
         panelImage.add(panelBotones);
         panelBotones.setBounds(0, 22, 890, 68);
 
-        panelBusqueda.setBackground(java.awt.SystemColor.activeCaption);
         panelBusqueda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelBusqueda.setPreferredSize(new java.awt.Dimension(890, 82));
         panelBusqueda.setLayout(null);
@@ -522,7 +518,7 @@ public class f_carrera extends javax.swing.JInternalFrame {
         labelBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelBusqueda.setText("Buscar Carrera");
         panelBusqueda.add(labelBusqueda);
-        labelBusqueda.setBounds(240, 10, 380, 28);
+        labelBusqueda.setBounds(240, 10, 380, 29);
 
         txtBusqueda.setOpaque(true);
         txtBusqueda.setPreferredSize(new java.awt.Dimension(250, 27));
@@ -599,7 +595,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
             panelImage.add(panelEncabezado);
             panelEncabezado.setBounds(0, 0, 890, 22);
 
-            panelBotonesformulario.setBackground(java.awt.SystemColor.activeCaption);
             panelBotonesformulario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
             panelBotonesformulario.setLayout(new java.awt.GridBagLayout());
 
@@ -652,12 +647,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
             labelCorreo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
             panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 25));
 
-            labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelFecha.setText("Fecha*");
-            labelFecha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 120, 25));
-
             txtDescripcion.setEditable(false);
             txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
             txtDescripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -678,19 +667,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
             txtObservacion.setPreferredSize(new java.awt.Dimension(120, 21));
             panelFormulario.add(txtObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 320, 25));
 
-            dateFecha.setBackground(new java.awt.Color(255, 255, 255));
-            dateFecha.setDate(Calendar.getInstance().getTime());
-            dateFecha.setDateFormatString("dd/MM/yyyy");
-            dateFecha.setEnabled(false);
-            dateFecha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            dateFecha.setIcon(null);
-            dateFecha.setMaxSelectableDate(new java.util.Date(3093496470100000L));
-            dateFecha.setMinSelectableDate(new java.util.Date(-62135744300000L));
-            dateFecha.setPreferredSize(new java.awt.Dimension(120, 22));
-            panelFormulario.add(dateFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 130, 25));
-
-            jSeparator1.setBackground(java.awt.SystemColor.inactiveCaption);
-            jSeparator1.setForeground(java.awt.SystemColor.inactiveCaption);
             jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
             panelFormulario.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 35, -1, 200));
 
@@ -707,8 +683,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
             rbEstado.setEnabled(false);
             panelFormulario.add(rbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 130, 25));
 
-            jSeparator3.setBackground(java.awt.SystemColor.inactiveCaption);
-            jSeparator3.setForeground(java.awt.SystemColor.inactiveCaption);
             jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
             panelFormulario.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 35, -1, 200));
 
@@ -850,7 +824,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
     private javax.swing.JButton bnGuardar;
     private javax.swing.JButton bnSuprimir;
     private javax.swing.JComboBox comboNivel;
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelBusqueda;
@@ -859,7 +832,6 @@ public class f_carrera extends javax.swing.JInternalFrame {
     private javax.swing.JLabel labelCorreo1;
     private javax.swing.JLabel labelCorreo2;
     private javax.swing.JLabel labelEncabezado;
-    private javax.swing.JLabel labelFecha;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelBotonesformulario;
     private javax.swing.JPanel panelBusqueda;

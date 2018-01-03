@@ -78,25 +78,25 @@ public class f_apoderado extends javax.swing.JInternalFrame {
      *
      * @return fecha
      */
-    private String getFecha() {
-
-        try {
-            String fecha;
-            int años = dateFecha.getCalendar().get(Calendar.YEAR);
-            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
-            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
-            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
-            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
-            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
-
-            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
-            return fecha;
-        } catch (Exception e) {
-            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
-
-        }
-        return null;
-    }
+//    private String getFecha() {
+//
+//        try {
+//            String fecha;
+//            int años = dateFecha.getCalendar().get(Calendar.YEAR);
+//            int dias = dateFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+//            int mess = dateFecha.getCalendar().get(Calendar.MONTH) + 1;
+//            int hours = dateFecha.getCalendar().get(Calendar.HOUR_OF_DAY);
+//            int minutes = dateFecha.getCalendar().get(Calendar.MINUTE);
+//            int seconds = dateFecha.getCalendar().get(Calendar.SECOND);
+//
+//            fecha = "" + años + "-" + mess + "-" + dias + " " + hours + ":" + minutes + ":" + seconds;
+//            return fecha;
+//        } catch (Exception e) {
+//            JOptionPane.showInternalMessageDialog(this, "Verifique la fecha");
+//
+//        }
+//        return null;
+//    }
 
     /* Funcion para llenar la tabla cuando se busque un cliente en especifico
      por el código, nombre, nit  */
@@ -294,20 +294,16 @@ public class f_apoderado extends javax.swing.JInternalFrame {
         labelNit = new javax.swing.JLabel();
         labelTelefono = new javax.swing.JLabel();
         labelCorreo = new javax.swing.JLabel();
-        labelFecha = new javax.swing.JLabel();
         txtNombres = new elaprendiz.gui.textField.TextField();
         txtApellidos = new elaprendiz.gui.textField.TextField();
         txtDireccion = new elaprendiz.gui.textField.TextField();
         txtDpi = new elaprendiz.gui.textField.TextField();
         txtTelefono = new elaprendiz.gui.textField.TextField();
         txtSexo = new elaprendiz.gui.textField.TextField();
-        dateFecha = new com.toedter.calendar.JDateChooser();
         panelBotonesformulario = new javax.swing.JPanel();
         bnGuardar = new javax.swing.JButton();
         bnCancelar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        labelCorreo1 = new javax.swing.JLabel();
-        rbEstado = new javax.swing.JRadioButton();
         labelCorreo2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         txtOcupacion = new elaprendiz.gui.textField.TextField();
@@ -321,7 +317,6 @@ public class f_apoderado extends javax.swing.JInternalFrame {
         panelImage.setBackground(new java.awt.Color(255, 255, 255));
         panelImage.setLayout(null);
 
-        panelBotones.setBackground(java.awt.SystemColor.controlHighlight);
         panelBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBotones.setFocusable(false);
 
@@ -421,7 +416,6 @@ public class f_apoderado extends javax.swing.JInternalFrame {
         panelImage.add(panelBotones);
         panelBotones.setBounds(0, 22, 890, 68);
 
-        panelBusqueda.setBackground(java.awt.SystemColor.activeCaption);
         panelBusqueda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelBusqueda.setPreferredSize(new java.awt.Dimension(890, 82));
         panelBusqueda.setLayout(null);
@@ -430,7 +424,7 @@ public class f_apoderado extends javax.swing.JInternalFrame {
         labelBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelBusqueda.setText("Buscar Apoderado");
         panelBusqueda.add(labelBusqueda);
-        labelBusqueda.setBounds(240, 10, 380, 28);
+        labelBusqueda.setBounds(240, 10, 380, 29);
 
         txtBusqueda.setOpaque(true);
         txtBusqueda.setPreferredSize(new java.awt.Dimension(250, 27));
@@ -525,13 +519,6 @@ public class f_apoderado extends javax.swing.JInternalFrame {
             panelFormulario.add(labelCorreo);
             labelCorreo.setBounds(30, 160, 120, 25);
 
-            labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelFecha.setText("Fecha*");
-            labelFecha.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelFecha);
-            labelFecha.setBounds(470, 120, 120, 25);
-
             txtNombres.setEditable(false);
             txtNombres.setBackground(new java.awt.Color(255, 255, 255));
             txtNombres.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -595,18 +582,6 @@ public class f_apoderado extends javax.swing.JInternalFrame {
             panelFormulario.add(txtSexo);
             txtSexo.setBounds(170, 160, 250, 25);
 
-            dateFecha.setDate(Calendar.getInstance().getTime());
-            dateFecha.setDateFormatString("dd/MM/yyyy");
-            dateFecha.setEnabled(false);
-            dateFecha.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-            dateFecha.setIcon(null);
-            dateFecha.setMaxSelectableDate(new java.util.Date(3093496470100000L));
-            dateFecha.setMinSelectableDate(new java.util.Date(-62135744300000L));
-            dateFecha.setPreferredSize(new java.awt.Dimension(120, 22));
-            panelFormulario.add(dateFecha);
-            dateFecha.setBounds(610, 120, 130, 25);
-
-            panelBotonesformulario.setBackground(java.awt.SystemColor.activeCaption);
             panelBotonesformulario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
             panelBotonesformulario.setLayout(new java.awt.GridBagLayout());
 
@@ -640,36 +615,17 @@ public class f_apoderado extends javax.swing.JInternalFrame {
             panelFormulario.add(panelBotonesformulario);
             panelBotonesformulario.setBounds(0, 290, 890, 60);
 
-            jSeparator1.setBackground(java.awt.SystemColor.inactiveCaption);
-            jSeparator1.setForeground(java.awt.SystemColor.inactiveCaption);
             jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
             panelFormulario.add(jSeparator1);
             jSeparator1.setBounds(159, 35, 2, 200);
 
-            labelCorreo1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            labelCorreo1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo1.setText("Estado");
-            labelCorreo1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCorreo1);
-            labelCorreo1.setBounds(470, 160, 120, 25);
-
-            rbEstado.setBackground(new java.awt.Color(255, 255, 255));
-            rbEstado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-            rbEstado.setSelected(true);
-            rbEstado.setText("Activo");
-            rbEstado.setEnabled(false);
-            panelFormulario.add(rbEstado);
-            rbEstado.setBounds(610, 160, 130, 21);
-
             labelCorreo2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCorreo2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-            labelCorreo2.setText("Apoderado");
+            labelCorreo2.setText("Ocupación");
             labelCorreo2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
             panelFormulario.add(labelCorreo2);
             labelCorreo2.setBounds(470, 80, 120, 25);
 
-            jSeparator3.setBackground(java.awt.SystemColor.inactiveCaption);
-            jSeparator3.setForeground(java.awt.SystemColor.inactiveCaption);
             jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
             panelFormulario.add(jSeparator3);
             jSeparator3.setBounds(600, 35, 2, 155);
@@ -832,17 +788,14 @@ public class f_apoderado extends javax.swing.JInternalFrame {
     private javax.swing.JButton bnEstadocuenta;
     private javax.swing.JButton bnGuardar;
     private javax.swing.JButton bnSuprimir;
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelBusqueda;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelCorreo;
-    private javax.swing.JLabel labelCorreo1;
     private javax.swing.JLabel labelCorreo2;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelEncabezado;
-    private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelNit;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
@@ -853,7 +806,6 @@ public class f_apoderado extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelFormulario;
     private elaprendiz.gui.panel.PanelImage panelImage;
     private javax.swing.JPanel panelResultados;
-    private javax.swing.JRadioButton rbEstado;
     private javax.swing.JScrollPane scrollpaneResultados;
     private javax.swing.JTable tableResultados;
     private elaprendiz.gui.textField.TextField txtApellidos;

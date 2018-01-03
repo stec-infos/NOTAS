@@ -657,7 +657,7 @@ public class f_alumno extends javax.swing.JInternalFrame {
             labelCorreo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
             labelCorreo.setText("Establecimiento*");
             labelCorreo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 25));
+            panelFormulario.add(labelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 25));
 
             labelFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelFecha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -719,12 +719,12 @@ public class f_alumno extends javax.swing.JInternalFrame {
             labelCorreo2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
             labelCorreo2.setText("Apellidos*");
             labelCorreo2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-            panelFormulario.add(labelCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 120, 25));
+            panelFormulario.add(labelCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 25));
 
             comboEstablecimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
             comboEstablecimiento.setEnabled(false);
             comboEstablecimiento.setName("unidad"); // NOI18N
-            panelFormulario.add(comboEstablecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, 27));
+            panelFormulario.add(comboEstablecimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 320, 27));
 
             labelCorreo3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelCorreo3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -740,7 +740,7 @@ public class f_alumno extends javax.swing.JInternalFrame {
             txtApellidos.setName("descripcion"); // NOI18N
             txtApellidos.setOpaque(true);
             txtApellidos.setPreferredSize(new java.awt.Dimension(120, 21));
-            panelFormulario.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 320, 25));
+            panelFormulario.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, 25));
 
             labelDireccion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             labelDireccion.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
